@@ -8,7 +8,6 @@ from src.calculator import Calculator
 
 class TestDemoFail:
     """Демонстрация провального тестирования."""
-    
     def setup_method(self):
         self.calc = Calculator()
     
