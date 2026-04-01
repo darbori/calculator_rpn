@@ -50,12 +50,12 @@ class TestTokenizer:
 
     def test_invalid_character(self):
         """Тест с недопустимым символом."""
-        # Регулярное выражение просто пропустит недопустимые символы
-        # но результат может быть пустым
         with pytest.raises(ValueError, match="Выражение не содержит валидных символов"):
             self.tokenizer.tokenize("abc")
 
     def test_complex_expression(self):
         """Тест сложного выражения."""
         tokens = self.tokenizer.tokenize("(2+3.5)*4-10/2")
-        assert tokens == ['(', 2.0, '+', 3.5, ')', '*', 4.0, '-', 10.0, '/', 2.0]
+        assert tokens == [
+            '(', 2.0, '+', 3.5, ')', '*', 4.0, '-', 10.0, '/', 2.0
+        ]

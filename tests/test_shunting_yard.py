@@ -1,9 +1,6 @@
-"""
-Тесты для алгоритма сортировочной станции.
-"""
 
 import pytest
-from src.shunting_yard import ShuntingYard
+from calculator_rpn.src.shunting_yard import ShuntingYard
 
 
 class TestShuntingYard:
@@ -46,7 +43,9 @@ class TestShuntingYard:
 
     def test_mixed_operators(self):
         """Тест смешанных операторов."""
-        rpn = self.shunting.infix_to_rpn([2.0, '+', 3.0, '*', 4.0, '-', 5.0, '/', 2.0])
+        rpn = self.shunting.infix_to_rpn(
+            [2.0, '+', 3.0, '*', 4.0, '-', 5.0, '/', 2.0]
+        )
         assert rpn == [2.0, 3.0, 4.0, '*', '+', 5.0, 2.0, '/', '-']
 
     def test_nested_parentheses(self):

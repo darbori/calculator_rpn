@@ -3,7 +3,7 @@
 """
 
 import pytest
-from src.rpn_evaluator import RPNEvaluator
+from calculator_rpn.src.rpn_evaluator import RPNEvaluator
 
 
 class TestRPNEvaluator:

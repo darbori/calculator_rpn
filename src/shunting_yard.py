@@ -27,7 +27,7 @@ class ShuntingYard:
         '-': 1,
         '*': 2,
         '/': 2,
-        '^': 3,  # Наивысший приоритет
+        '^': 3,      # Наивысший приоритет
     }
 
     # Ассоциативность операций
@@ -38,7 +38,7 @@ class ShuntingYard:
         '-': 'L',
         '*': 'L',
         '/': 'L',
-        '^': 'R',  # Степень вычисляется справа налево: 2^3^2 = 2^(3^2)
+        '^': 'R',    # Степень вычисляется справа налево: 2^3^2 = 2^(3^2)
     }
 
     def infix_to_rpn(self, tokens: List[Union[str, float]]) -> List[Union[str, float]]:
@@ -54,8 +54,8 @@ class ShuntingYard:
         Raises:
             ValueError: При непарных скобках или других ошибках
         """
-        output = []  # Выходная очередь (результат)
-        stack = []  # Стек для операторов и скобок
+        output = []      # Выходная очередь (результат)
+        stack = []       # Стек для операторов и скобок
 
         for token in tokens:
             # 1. Если токен - число, добавляем его в выход
@@ -66,8 +66,8 @@ class ShuntingYard:
             elif token in self.PRECEDENCE:
                 # Пока в стеке есть операторы с большим или равным приоритетом
                 # (для левоассоциативных операций)
-                while (stack and stack[-1] != '(' and
-                       self._should_pop_operator(stack[-1], token)):
+                while (stack and stack[-1] != '('
+                       and self._should_pop_operator(stack[-1], token)):
                     output.append(stack.pop())
                 stack.append(token)
 
@@ -83,14 +83,18 @@ class ShuntingYard:
 
                 # Проверяем, нашли ли левую скобку
                 if not stack:
-                    raise ValueError("Непарные скобки: закрывающая скобка без открывающей")
+                    raise ValueError(
+                        "Непарные скобки: закрывающая скобка без открывающей"
+                    )
 
                 stack.pop()  # Удаляем левую скобку из стека
 
         # 5. Выталкиваем все оставшиеся операторы из стека
         while stack:
             if stack[-1] in '()':
-                raise ValueError("Непарные скобки: остались незакрытые скобки")
+                raise ValueError(
+                    "Непарные скобки: остались незакрытые скобки"
+                )
             output.append(stack.pop())
 
         return output
@@ -111,8 +115,8 @@ class ShuntingYard:
             return True
 
         # Если приоритеты равны и текущий оператор левоассоциативный
-        if (self.PRECEDENCE[stack_op] == self.PRECEDENCE[current_op] and
-                self.ASSOCIATIVITY[current_op] == 'L'):
+        if (self.PRECEDENCE[stack_op] == self.PRECEDENCE[current_op]
+                and self.ASSOCIATIVITY[current_op] == 'L'):
             return True
 
         return False

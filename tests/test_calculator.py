@@ -3,7 +3,7 @@
 """
 
 import pytest
-from src.calculator import Calculator
+from calculator_rpn.src.calculator import Calculator
 
 
 class TestCalculator:
@@ -41,11 +41,13 @@ class TestCalculator:
 
     def test_power_priority(self):
         """Тест: степень имеет наивысший приоритет."""
-        assert self.calc.calculate("2+3^2*4") == 38.0  # 2 + (9*4) = 38
+        # 2 + (3^2)*4 = 2 + 9*4 = 38
+        assert self.calc.calculate("2+3^2*4") == 38.0
 
     def test_power_associativity(self):
         """Тест: степень правоассоциативна."""
-        assert self.calc.calculate("2^3^2") == 512.0  # 2^(3^2) = 2^9 = 512
+        # 2^(3^2) = 2^9 = 512
+        assert self.calc.calculate("2^3^2") == 512.0
 
     # Скобки
     def test_parentheses(self):
@@ -63,7 +65,8 @@ class TestCalculator:
 
     def test_complex_with_power(self):
         """Тест: сложное выражение со степенью."""
-        assert self.calc.calculate("(2+3)^2*4-10/2") == 95.0  # 5^2*4-5 = 25*4-5=100-5=95
+        # (2+3)^2*4-10/2 = 5^2*4-5 = 25*4-5=100-5=95
+        assert self.calc.calculate("(2+3)^2*4-10/2") == 95.0
 
     # Десятичные числа
     def test_decimal_numbers(self):
