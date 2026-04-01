@@ -1,6 +1,6 @@
 
 import pytest
-from calculator_rpn.src.shunting_yard import ShuntingYard
+from src.shunting_yard import ShuntingYard
 
 
 class TestShuntingYard:

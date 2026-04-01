@@ -2,9 +2,9 @@
 Основной модуль калькулятора, объединяющий все компоненты.
 """
 
-from calculator_rpn.src.tokenizer import Tokenizer
-from calculator_rpn.src.shunting_yard import ShuntingYard
-from calculator_rpn.src.rpn_evaluator import RPNEvaluator
+from src.tokenizer import Tokenizer
+from src.shunting_yard import ShuntingYard
+from src.rpn_evaluator import RPNEvaluator
 
 
 class Calculator:

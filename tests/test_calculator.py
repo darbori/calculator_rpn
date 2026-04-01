@@ -3,7 +3,7 @@
 """
 
 import pytest
-from calculator_rpn.src.calculator import Calculator
+from src.calculator import Calculator
 
 
 class TestCalculator:

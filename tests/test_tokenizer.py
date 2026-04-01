@@ -3,7 +3,7 @@
 """
 
 import pytest
-from calculator_rpn.src.tokenizer import Tokenizer
+from src.tokenizer import Tokenizer
 
 
 class TestTokenizer:
