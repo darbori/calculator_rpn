@@ -12,12 +12,13 @@ class TestDemoFail:
         self.calc = Calculator()
 
     def test_intentional_fail(self):
-        """Этот тест намеренно провалится."""
+        """Исправленный тест - теперь правильное ожидание."""
         result = self.calc.calculate("2+2")
-        # Намеренно неправильное ожидание
-        assert result == 5.0, f"Ожидалось 5.0, но получено {result}"
+        # Исправлено: 4.0 вместо 5.0
+        assert result == 4.0, f"Ожидалось 4.0, но получено {result}"
 
     def test_division_by_zero_fail(self):
-        """Демонстрация ошибки деления на ноль."""
-        with pytest.raises(ValueError):  # Неправильное исключение
+        """Исправленный тест - правильное исключение."""
+        # Исправлено: ZeroDivisionError вместо ValueError
+        with pytest.raises(ZeroDivisionError, match="Деление на ноль"):
             self.calc.calculate("5/0")
